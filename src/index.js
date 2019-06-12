@@ -33,9 +33,9 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')))
 
 app.use(require('./routes'))
 
-// 40 MIN DO VÍDEO
 
-server.listen(3000)
+// Definindo variáveis ambiente no node para que o heroku tenha controle sobre definição das portas
+server.listen(process.env.PORT || 3000)
 
 // Ao colocar o socket.io e add o server a aplicação passa a ouvir
 //requisições http e websocket

@@ -20,7 +20,8 @@ const File = new mongoose.Schema({
 // Campo virtual que não existe no banco, apenas no back
 
 File.virtual('url').get(function() {
-    return `http://localhost:3000/files/${encodeURIComponent(this.path)}`
+    const url = process.env.URL || 'http://localhost:3000'
+    return `${url}/files/${encodeURIComponent(this.path)}`
 })
 
 module.exports = mongoose.model('File', File);
